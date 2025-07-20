@@ -6,14 +6,32 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: '/basehref',
   build: {
+    minify: false,
     target: ['es2020'],
   },
   resolve: {
     mainFields: ['module'],
   },
   plugins: [
-    analog(),
+    analog({
+      disableTypeChecking: false,
+      ssr: true,
+      ...(mode === 'production' ? {apiPrefix: 'basehref'} : {apiPrefix: 'basehref/api'}),
+      nitro: {
+        routeRules: {
+          '/': {
+            prerender: false,
+          },
+        },
+      },
+      prerender: {
+        routes: async () => {
+          return [];
+        }
+      }
+    }),
     tailwindcss()
   ],
   test: {
