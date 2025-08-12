@@ -13,7 +13,7 @@
     "watch": "vite build --watch",
     "test": "vitest",
     "preview": "npx vite build --mode production && NITRO_APP_BASE_URL='/basehref/' node dist/analog/server/index.mjs",
-    "preview_VITE_ANALOG_PUBLIC_BASE_URL": "npx vite build --mode production && VITE_ANALOG_PUBLIC_BASE_URL='http://localhost:3000' NITRO_APP_BASE_URL='/basehref/' node dist/analog/server/index.mjs"
+    "preview_VITE_ANALOG_PUBLIC_BASE_URL": "VITE_ANALOG_PUBLIC_BASE_URL='http://localhost:3000' npx vite build --mode production && NITRO_APP_BASE_URL='/basehref/' node dist/analog/server/index.mjs"
   },
   "private": true,
   "dependencies": {

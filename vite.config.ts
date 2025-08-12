@@ -19,6 +19,9 @@ export default defineConfig(({ mode }) => ({
       disableTypeChecking: false,
       ssr: true,
       ...(mode === 'production' ? {apiPrefix: 'basehref'} : {apiPrefix: 'basehref/api'}),
+      vite: {
+        inlineStylesExtension: 'scss',
+      },
       nitro: {
         routeRules: {
           '/': {
